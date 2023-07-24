@@ -11,10 +11,10 @@ class CompanyController extends Controller
    
     //
     public static function create(Request $request){
-        CompanyService::create($request->all());
+       $data= CompanyService::create($request->all());
         return response()->json(['status'=>true,
                                  'messege'=>'new data created',
-                                 'data'=>$request->all()]);
+                                 'data'=>$data]);
 
     
       

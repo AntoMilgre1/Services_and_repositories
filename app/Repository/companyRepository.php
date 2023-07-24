@@ -34,7 +34,22 @@ class CompanyRepository {
 
     }
     public static function update($id){
-            $change=Company::where('id',$id)->update(['company_id'=>2323]);
+        $company=Company::where('id',$id)->get();
+        $company->name                      = $data['name'];
+        $company->address_1                 = $data['address_1'];
+        $company->address_2                 = $data['address_2'];
+        $company->city                      = $data['city'];
+        $company->state                     = $data['state'];
+        $company->country                   = $data['country'];
+        $company->zip_code                  = $data['zip_code'];
+        $company->primary_phone_no          = $data['primary_phone_no'];
+        $company->primary_email_address     = $data['primary_email_address'];
+        $company->language_id               = $data['language_id'];
+        $company->logo                      = $data['logo'];
+
+        $company->save();
+
+       return $company;
            
     }
     public static function delete($id){
