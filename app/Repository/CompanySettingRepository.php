@@ -8,10 +8,11 @@ class CompanySettingRepository {
     public static function create($data){
           
             
-            $request = new CompanySetting();
-            $request->company_id                = $data['company_id'];
-            $request->setting_type_id           = $data['setting_type_id'];
-            $request->value                     = $data['value'];
+            $companysetting = new CompanySetting();
+
+            $companysetting->company_id                = $data['company_id'];
+            $companysetting->setting_type_id           = $data['setting_type_id'];
+            $companysetting->value                     = $data['value'];
             
             
             $request->save();
@@ -27,7 +28,12 @@ class CompanySettingRepository {
 
     }
     public static function update($id){
-            $change=CompanySetting::where('id',$id)->update(['company_id'=>2323]);
+            $companysetting=CompanySetting::where('id',$id)->get();
+            $companysetting->company_id                = $data['company_id'];
+            $companysetting->setting_type_id           = $data['setting_type_id'];
+            $companysetting->value                     = $data['value'];
+            $companysetting->save();
+            
            
     }
     public static function delete($id){

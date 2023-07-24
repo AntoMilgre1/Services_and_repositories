@@ -11,10 +11,10 @@ class ServicesOntimeController extends Controller
 
     //
     public static function create(Request $request){
-        servicesOntimeService::create($request->all());
+        $data=servicesOntimeService::create($request->all());
         return response()->json(['status'=>true,
                                  'messege'=>'new data created',
-                                 'data'=>$request->all()]);
+                                 'data'=>$data]);
 
     
       

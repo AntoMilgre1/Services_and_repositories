@@ -9,10 +9,10 @@ class RequestAssignedTypeController extends Controller
 {
     //
     public static function create(Request $request){
-        RequestAssignedTypeService::create($request->all());
+        $data=RequestAssignedTypeService::create($request->all());
         return response()->json(['status'=>true,
                                  'messege'=>'new data created',
-                                 'data'=>$request->all()]);
+                                 'data'=>$data]);
 
     
       

@@ -9,10 +9,10 @@ class TeamtypeController extends Controller
 {
     //
     public static function create(Request $request){
-        TeamTypeService::create($request->all());
+        $data=TeamTypeService::create($request->all());
         return response()->json(['status'=>true,
                                  'messege'=>'new data created',
-                                 'data'=>$request->all()]);
+                                 'data'=>$data]);
 
     
       

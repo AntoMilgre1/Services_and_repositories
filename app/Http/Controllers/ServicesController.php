@@ -10,10 +10,10 @@ class ServicesController extends Controller
    
     //
     public static function create(Request $request){
-        ServicesService::create($request->all());
+        $data=ServicesService::create($request->all());
         return response()->json(['status'=>true,
                                  'messege'=>'new data created',
-                                 'data'=>$request->all()]);
+                                 'data'=>$data]);
 
     
       
