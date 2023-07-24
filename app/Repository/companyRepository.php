@@ -6,8 +6,7 @@ use App\Models\Company;
 
 class CompanyRepository {
     public static function create($data){
-          
-            
+
             $company = new Company;
             $company->name                      = $data['name'];
             $company->address_1                 = $data['address_1'];
@@ -19,19 +18,13 @@ class CompanyRepository {
             $company->primary_phone_no          = $data['primary_phone_no'];
             $company->primary_email_address     = $data['primary_email_address'];
             $company->language_id               = $data['language_id'];
-            $company->logo                      = $data['logo'];
-           
+            $company->logo                      = $data['logo'];    
             $company->save();
-            // return 'success';
-
-
-
+            return $company;
     }
     public static function read($id){
-
         $individualCompany=Company::where('id',$id)->get();
         return $individualCompany;
-
     }
     public static function update($id){
             $company=Company::where('id',$id)->get();
@@ -46,7 +39,7 @@ class CompanyRepository {
             $company->primary_email_address     = $data['primary_email_address'];
             $company->language_id               = $data['language_id'];
             $company->logo                      = $data['logo'];
-           
+  
             $company->save();
 
            return $company;

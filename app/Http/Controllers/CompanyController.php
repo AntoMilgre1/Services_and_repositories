@@ -14,10 +14,7 @@ class CompanyController extends Controller
         $company = CompanyService::create($request->all());
         return response()->json(['status'=>true,
                                  'message'=>'New Company Created',
-                                 'data'=>$company],200);
-
-    
-      
+                                 'data'=>$company],200);   
     }
     public static function read($id){
         $individualCompany=CompanyService::read($id);
