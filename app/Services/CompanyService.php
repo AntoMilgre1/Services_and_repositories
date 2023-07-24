@@ -6,17 +6,18 @@ use App\Repository\CompanyRepository;
 
 class CompanyService{
     public static function create($data){
-        $details=CompanyRepository::create($data);
-        return $details;
+        $company=CompanyRepository::create($data);
+        return $company;
     }
     public static function read($id){
     
-        $details=CompanyRepository::read($id);
-        return $details;
+        $individualCompany=CompanyRepository::read($id);
+        return $individualCompany;
 
     }
-    public static function update($id){
-        CompanyRepository::update($id);
+    public static function update($data){
+       $company= CompanyRepository::update($data);
+       return $company;
        
     }
     public static function delete($id){

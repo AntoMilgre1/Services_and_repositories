@@ -11,25 +11,31 @@ class CompanyController extends Controller
    
     //
     public static function create(Request $request){
-        CompanyService::create($request->all());
+        $company = CompanyService::create($request->all());
         return response()->json(['status'=>true,
-                                 'messege'=>'new data created',
-                                 'data'=>$request->all()]);
+                                 'message'=>'New Company Created',
+                                 'data'=>$company],200);
 
     
       
     }
     public static function read($id){
-        $details=CompanyService::read($id);
-        return response()->json(['data'=>$details]);
+        $individualCompany=CompanyService::read($id);
+        return response()->json(['status'=>true,
+                                 'message'=>'Company Data',
+                                 'data'=>$individualCompany],200);
     }
-    public static function update($id){
-        CompanyService::update($id);
-        return response()->json(['message' => 'updated']);
+    public static function update(Request $request){
+        $company = CompanyService::update($request->all());
+        return response()->json(['status'=>true,
+                                 'message'=>'Company Data Updates',
+                                 'data'=>$company],200);
     }
     public static function delete($id){
         CompanyService::delete($id);
-        return response()->json(['messege'=>'Deleted']);
+        return response()->json(['status'=>true,
+                                 'message'=>'Company Data Deleted'
+                             ],204);
     }
 }
 
