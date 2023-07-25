@@ -23,9 +23,9 @@ class ServicesOntimeController extends Controller
        $details=servicesOntimeService::read($id);
         return response()->json(['data'=>$details]);
     }
-    public static function update($id){
-        servicesOntimeService::update($id);
-        return response()->json(['message' => 'updated']);
+    public static function update(Request $request){
+        $new=servicesOntimeService::update($request->all());
+        return response()->json(['status'=>true,'message' => 'updated','data'=>$new]);
     }
     public static function delete($id){
         servicesOntimeService ::delete($id);

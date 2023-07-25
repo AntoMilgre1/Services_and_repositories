@@ -25,7 +25,12 @@ class RequestAssignedTypeRepository{
 
     }
         public static function update($id){
-        $change=RequestAssignedType::where('id',$id)->update(['name'=>2323]);
+        $change=RequestAssignedType::where('id',$id)->get();
+        $change->name = $data['name'];
+        
+       
+        $change->save();
+
        
     }
         public static function delete($id){

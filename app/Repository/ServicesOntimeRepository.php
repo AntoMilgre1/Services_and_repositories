@@ -26,7 +26,13 @@ class ServicesOntimeRepository {
 
     }
     public static function update($id){
-            $change=ServicesOntime::where('id',$id)->update(['company_id'=>2323]);
+            $change=ServicesOntime::where('id',$id)->get();
+            $change->price          = $data['price'];
+            $change->purchase_limit = $data['purchase_limit'];
+            
+            $change->service_id     = $data['service_id'];
+           
+            $change->save();
            
     }
     public static function delete($id){

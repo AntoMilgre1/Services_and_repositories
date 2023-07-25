@@ -15,7 +15,7 @@ class CompanySettingRepository {
             $companysetting->value                     = $data['value'];
             
             
-            $request->save();
+            $companysetting->save();
             // return 'success';
 
 
@@ -29,10 +29,12 @@ class CompanySettingRepository {
     }
     public static function update($id){
             $companysetting=CompanySetting::where('id',$id)->get();
-            $companysetting->company_id                = $data['company_id'];
-            $companysetting->setting_type_id           = $data['setting_type_id'];
-            $companysetting->value                     = $data['value'];
+            $companysetting->company_id                = $id['company_id'];
+            $companysetting->setting_type_id           = $id['setting_type_id'];
+            $companysetting->value                     = $id['value'];
             $companysetting->save();
+
+            return $companysetting;
             
            
     }

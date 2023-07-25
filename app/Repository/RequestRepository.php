@@ -30,8 +30,17 @@ class RequestRepository {
 
     }
     public static function update($id){
-            $change=Request::where('id',$id)->update(['company_id'=>2323]);
-           
+            $change=Request::where('id',$id)->get();
+            $change->company_id            = $data['company_id'];
+            $change->client_id             = $data['client_id'];
+            $change->request_initiated_id  = $data['request_initiated_id'];
+            $change->title                 = $data['title'];
+            $change->request_status        = $data['request_status'];
+            $change->priority_id           = $data['priority_id'];
+            $change->due_at                = $data['due_at'];
+            $change->archive               = $data['archive'];
+            $change->save();
+            return $change;
     }
     public static function delete($id){
         $drop=Request::where('id',$id)->delete();

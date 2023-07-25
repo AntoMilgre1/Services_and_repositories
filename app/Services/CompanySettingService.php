@@ -16,7 +16,8 @@ class CompanySettingService{
 
     }
     public static function update($id){
-        CompanySettingRepository::update($id);
+        $new=CompanySettingRepository::update($id);
+        return $new;
        
     }
     public static function delete($id){

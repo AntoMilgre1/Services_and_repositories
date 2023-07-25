@@ -23,12 +23,12 @@ class CompanySettingTypeRepository {
         return $details;
 
     }
-    public static function update($data){
+    public static function update($id){
             $CompanySettingType=CompanySettingType::where('id',$id)->get();
 
-            $CompanySettingType->name                = $data['name'];
+            $CompanySettingType->name                = $id['name'];
             $CompanySettingType->save();
-           
+           return $CompanySettingType;
     }
     public static function delete($id){
         $drop=CompanySettingType::where('id',$id)->delete();

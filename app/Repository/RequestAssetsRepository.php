@@ -20,7 +20,12 @@ class RequestAssetsRepository {
 
     }
     public static function update($id){
-            $change=RequestAssets::where('id',$id)->update(['type'=>'false type']);
+            $change=RequestAssets::where('id',$id)->get();
+            $change=new RequestAssets;
+            $change->file_name          =$id['file_name'];
+            $change->type               =$id['type'];
+            $change->save();
+            
            
     }
     public static function delete($id){

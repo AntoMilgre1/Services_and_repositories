@@ -9,10 +9,10 @@ class TeamRepository {
           
             
             $request = new Team;
-            $request->name = $data['name'];
-            $request->team_type = $data['team_type'];
-            $request->company_id = $data['company_id'];
-            $request->created_by = $data['created_by'];
+            $request->name          = $data['name'];
+            $request->team_type     = $data['team_type'];
+            $request->company_id    = $data['company_id'];
+            $request->created_by    = $data['created_by'];
            
             $request->save();
             // return 'success';
@@ -27,7 +27,14 @@ class TeamRepository {
 
     }
     public static function update($id){
-            $change=Team::where('id',$id)->update(['company_id'=>2323]);
+            $change=Team::where('id',$id)->get();
+            $change->name          = $id['name'];
+            $change->team_type     = $id['team_type'];
+            $change->company_id    = $id['company_id'];
+            $change->created_by    = $id['created_by'];
+           
+            $change->save();
+            return $change;
            
     }
     public static function delete($id){

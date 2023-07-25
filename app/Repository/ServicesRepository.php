@@ -27,7 +27,14 @@ class ServicesRepository {
 
     }
     public static function update($id){
-            $change=Services::where('id',$id)->update(['company_id'=>2323]);
+            $change=Services::where('id',$id)->get();
+            $change->description        = $id['description'];
+            $change->company_id         = $id['company_id'];
+            $change->image              = $id['image'];
+            $change->pricing_type_id    = $id['pricing_type_id'];
+           
+            $change->save();
+            return $change;
            
     }
     public static function delete($id){

@@ -21,9 +21,9 @@ class TeamtypeController extends Controller
        $details=TeamTypeService::read($id);
         return response()->json(['data'=>$details]);
     }
-    public static function update($id){
-        TeamTypeService::update($id);
-        return response()->json(['message' => 'updated']);
+    public static function update(Request $request){
+        $new=TeamTypeService::update($request->all());
+        return response()->json(['status'=>true,'message' => 'updated','data'=>$new]);
     }
     public static function delete($id){
         TeamTypeService::delete($id);

@@ -22,9 +22,9 @@ class ServicesController extends Controller
        $details=ServicesService::read($id);
         return response()->json(['data'=>$details]);
     }
-    public static function update($id){
-        ServicesService::update($id);
-        return response()->json(['message' => 'updated']);
+    public static function update(Request $request){
+        $new=ServicesService::update($request->all());
+        return response()->json(['status'=>true,'message' => 'updated','data'=>$new]);
     }
     public static function delete($id){
         ServicesService::delete($id);

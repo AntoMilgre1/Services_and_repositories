@@ -26,9 +26,9 @@ class RequestController extends Controller
         $details=RequestService::read($id);
         return response()->json(['data'=>$details]);
     }
-    public static function update($id){
-            RequestService::update($id);
-            return response()->json(['message' => 'updated']);
+    public static function update(Request $request){
+        $new=RequestService::update($request->all());
+        return response()->json(['status'=>true,'message' => 'updated','data'=>$new]);
     }
     public static function delete($id){
         RequestService::delete($id);

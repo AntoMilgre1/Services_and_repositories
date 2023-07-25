@@ -21,9 +21,9 @@ class TeamController extends Controller
        $details=TeamService::read($id);
         return response()->json(['data'=>$details]);
     }
-    public static function update($id){
-        TeamService::update($id);
-        return response()->json(['message' => 'updated']);
+    public static function update(Request $request){
+        $new=TeamService::update($request->all());
+        return response()->json(['status'=>true,'message' => 'updated','data'=>$new]);
     }
     public static function delete($id){
         TeamService::delete($id);

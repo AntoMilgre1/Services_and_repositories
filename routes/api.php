@@ -50,7 +50,7 @@ Route::get('Company/delete/{id}', [App\Http\Controllers\CompanyController::class
 
 Route::post('CompanySetting/create', [App\Http\Controllers\CompanySettingController::class, 'create'])->name('request.create');
 Route::get('CompanySetting/read/{id}', [App\Http\Controllers\CompanySettingController::class, 'read'])->name('request.read');
-Route::get('CompanySetting/update/{id}', [App\Http\Controllers\CompanySettingController::class, 'update'])->name('request.update');
+Route::post('CompanySetting/update/{id}', [App\Http\Controllers\CompanySettingController::class, 'update'])->name('request.update');
 Route::get('CompanySetting/delete/{id}', [App\Http\Controllers\CompanySettingController::class, 'delete'])->name('request.delete');
 
 Route::post('CompanySettingType/create', [App\Http\Controllers\CompanySettingTypeController::class, 'create'])->name('request.create');

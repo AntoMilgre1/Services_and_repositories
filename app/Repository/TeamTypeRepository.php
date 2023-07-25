@@ -4,7 +4,7 @@ namespace App\Repository;
 
 use App\Models\TeamType;
 
-class TeaamTypeRepository{
+class TeamTypeRepository{
     public static function create($data){
           
             
@@ -25,7 +25,12 @@ class TeaamTypeRepository{
 
     }
         public static function update($id){
-        $change=TeamType::where('id',$id)->update(['name'=>2323]);
+        $change=TeamType::where('id',$id)->get();
+        $change->naame = $id['naame'];
+        
+       
+        $change->save();
+        return $change;
        
     }
         public static function delete($id){
