@@ -19,7 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('company_id');
             // $table->foreign('company_id')->reference('id')->on('_company');
             $table->unsignedBigInteger('created_by');
-            $table->foreign('created_by')->reference('id')->on('users');
+            //$table->foreign('created_by')->reference('id')->on('users');
             $table->timestamps();
         });
     }
