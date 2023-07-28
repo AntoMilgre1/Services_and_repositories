@@ -12,14 +12,7 @@ class CompanyController extends Controller
     //
     public static function create(Request $request){
 
-       $data= CompanyService::create($request->all());
-        return response()->json(['status'=>true,
-                                 'messege'=>'new data created',
-                                 'data'=>$data]);
-
-    
-      
-
+       
         $company = CompanyService::create($request->all());
         return response()->json(['status'=>true,
                                  'message'=>'New Company Created',
@@ -35,7 +28,7 @@ class CompanyController extends Controller
     public static function update(Request $request){
         $company = CompanyService::update($request->all());
         return response()->json(['status'=>true,
-                                 'message'=>'Company Data Updates',
+                                 'message'=>'Company Data Updated',
                                  'data'=>$company],200);
     }
     public static function delete($id){

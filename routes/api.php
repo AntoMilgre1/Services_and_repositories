@@ -24,7 +24,7 @@ Route::get('request/delete/{id}', [App\Http\Controllers\RequestController::class
 
 
 Route::post('requestassets/create', [App\Http\Controllers\RequestAssetsController::class, 'create'])->name('request.create');
-Route::get('requestassets/read/{id}', [App\Http\Controllers\RequestAssetsController::class, 'read'])->name('request.read');
+Route::get('request-assets/read/{id}', [App\Http\Controllers\RequestAssetsController::class, 'read'])->name('request.read');
 Route::get('requestassets/update/{id}', [App\Http\Controllers\RequestAssetsController::class, 'update'])->name('request.update');
 Route::get('requestassets/delete/{id}', [App\Http\Controllers\RequestAssetsController::class, 'delete'])->name('request.delete');
 
@@ -33,20 +33,20 @@ Route::get('Team/read/{id}', [App\Http\Controllers\TeamController::class, 'read'
 Route::get('Team/update/{id}', [App\Http\Controllers\TeamController::class, 'update'])->name('request.update');
 Route::get('Team/delete/{id}', [App\Http\Controllers\TeamController::class, 'delete'])->name('request.delete');
 
-Route::post('team_type/create', [App\Http\Controllers\TeamtypeController::class, 'create'])->name('request.create');
-Route::get('team_type/read/{id}', [App\Http\Controllers\TeamtypeController::class, 'read'])->name('request.read');
-Route::get('team_type/update/{id}', [App\Http\Controllers\TeamtypeController::class, 'update'])->name('request.update');
-Route::get('team_type/delete/{id}', [App\Http\Controllers\TeamtypeController::class, 'delete'])->name('request.delete');
+Route::post('team-type/create', [App\Http\Controllers\TeamtypeController::class, 'create'])->name('request.create');
+Route::get('team-type/read/{id}', [App\Http\Controllers\TeamtypeController::class, 'read'])->name('request.read');
+Route::get('team-type/update/{id}', [App\Http\Controllers\TeamtypeController::class, 'update'])->name('request.update');
+Route::get('team-type/delete/{id}', [App\Http\Controllers\TeamtypeController::class, 'delete'])->name('request.delete');
 
 Route::post('RequestAssignedType/create', [App\Http\Controllers\RequestAssignedTypeController::class, 'create'])->name('request.create');
 Route::get('RequestAssignedType/read/{id}', [App\Http\Controllers\RequestAssignedTypeController::class, 'read'])->name('request.read');
 Route::get('RequestAssignedType/update/{id}', [App\Http\Controllers\RequestAssignedTypeController::class, 'update'])->name('request.update');
 Route::get('RequestAssignedType/delete/{id}', [App\Http\Controllers\RequestAssignedTypeController::class, 'delete'])->name('request.delete');
 
-Route::post('Company/create', [App\Http\Controllers\CompanyController::class, 'create'])->name('request.create');
-Route::get('Company/read/{id}', [App\Http\Controllers\CompanyController::class, 'read'])->name('request.read');
-Route::get('Company/update/{id}', [App\Http\Controllers\CompanyController::class, 'update'])->name('request.update');
-Route::get('Company/delete/{id}', [App\Http\Controllers\CompanyController::class, 'delete'])->name('request.delete');
+Route::post('Company/create', [App\Http\Controllers\CompanyController::class, 'create'])->name('company.create');
+Route::get('Company/read/{id}', [App\Http\Controllers\CompanyController::class, 'read'])->name('company.read');
+Route::post('company/update', [App\Http\Controllers\CompanyController::class, 'update'])->name('company.update');
+Route::get('Company/delete/{id}', [App\Http\Controllers\CompanyController::class, 'delete'])->name('company.delete');
 
 Route::post('CompanySetting/create', [App\Http\Controllers\CompanySettingController::class, 'create'])->name('request.create');
 Route::get('CompanySetting/read/{id}', [App\Http\Controllers\CompanySettingController::class, 'read'])->name('request.read');
