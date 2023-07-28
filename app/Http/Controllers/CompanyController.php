@@ -7,41 +7,60 @@ use App\Services\CompanyService;
 
 class CompanyController extends Controller
 {
- 
-   
-    //
-    public static function create(Request $request){
-
-       $data= CompanyService::create($request->all());
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        $companies = CompanyService::index();
         return response()->json(['status'=>true,
-                                 'messege'=>'new data created',
-                                 'data'=>$data]);
+                                 'message'=>'All Company List',
+                                 'data'=>$companies],200);   
+    }
 
-    
-      
-
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
         $company = CompanyService::create($request->all());
         return response()->json(['status'=>true,
                                  'message'=>'New Company Created',
                                  'data'=>$company],200);   
-
     }
-    public static function read($id){
-        $individualCompany=CompanyService::read($id);
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        $individualCompany=CompanyService::show($id);
         return response()->json(['status'=>true,
                                  'message'=>'Company Data',
                                  'data'=>$individualCompany],200);
     }
-    public static function update(Request $request){
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
         $company = CompanyService::update($request->all());
         return response()->json(['status'=>true,
-                                 'message'=>'Company Data Updates',
+                                 'message'=>'Company Data Updated',
                                  'data'=>$company],200);
     }
-    public static function delete($id){
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
         CompanyService::delete($id);
         return response()->json(['status'=>true,
                                  'message'=>'Company Data Deleted'
                              ],204);
     }
 }
+
+

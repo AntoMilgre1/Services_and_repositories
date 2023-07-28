@@ -9,9 +9,9 @@ class CompanyService{
         $company=CompanyRepository::create($data);
         return $company;
     }
-    public static function read($id){
+    public static function show($id){
     
-        $individualCompany=CompanyRepository::read($id);
+        $individualCompany=CompanyRepository::show($id);
         return $individualCompany;
 
     }
@@ -23,4 +23,9 @@ class CompanyService{
     public static function delete($id){
         CompanyRepository::delete($id);
     }
+    
+    public static function index($id){
+        CompanyRepository::index($id);
+    }
+
 }
