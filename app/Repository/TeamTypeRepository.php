@@ -37,3 +37,5 @@ class TeamTypeRepository{
         $drop=TeamType::where('id',$id)->delete();
     }
 }
+
+
