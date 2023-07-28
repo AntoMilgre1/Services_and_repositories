@@ -5,6 +5,10 @@ namespace App\Services;
 use App\Repository\CompanyRepository;
 
 class CompanyService{
+    public static function index(){
+        $companies=CompanyRepository::index();
+        return $companies;
+    }
     public static function create($data){
         $company=CompanyRepository::create($data);
         return $company;

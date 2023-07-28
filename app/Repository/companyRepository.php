@@ -5,8 +5,9 @@ namespace App\Repository;
 use App\Models\Company;
 
 class CompanyRepository {
-    public static function view(){
+    public static function index(){
         $companies = Company::all();
+        return $companies;
     }
     public static function create($data){
 
