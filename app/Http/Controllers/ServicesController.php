@@ -7,29 +7,58 @@ use App\Services\ServicesService;
 
 class ServicesController extends Controller
 {
-   
-    //
-    public static function create(Request $request){
-        $data=ServicesService::create($request->all());
+   /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        $services=ServicesService::index();
+        return $services;
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+
+        $services=ServicesService::create($request->all());
         return response()->json(['status'=>true,
                                  'messege'=>'new data created',
-                                 'data'=>$data]);
+                                 'data'=>$services]);
+    }
 
-    
-      
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        $details=ServicesService::show($id);
+        return response()->json(['status'=>true,
+                                 'messege'=>'Services Data',
+                                 'data'=>$details]);
     }
-    public static function read($id){
-       $details=ServicesService::read($id);
-        return response()->json(['data'=>$details]);
-    }
-    public static function update(Request $request){
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
         $new=ServicesService::update($request->all());
         return response()->json(['status'=>true,'message' => 'updated','data'=>$new]);
     }
-    public static function delete($id){
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
         ServicesService::delete($id);
         return response()->json(['messege'=>'Deleted']);
     }
+    
+    
+    
 }
 
 

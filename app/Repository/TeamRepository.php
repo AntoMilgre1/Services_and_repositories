@@ -5,36 +5,35 @@ namespace App\Repository;
 use App\Models\Team;
 
 class TeamRepository {
-    public static function create($data){
+    public static function index(){
+        $teams=Team::all();
+        return $teams;
+    }
+    public static function store($data){
           
             
-            $request = new Team;
-            $request->name          = $data['name'];
-            $request->team_type     = $data['team_type'];
-            $request->company_id    = $data['company_id'];
-            $request->created_by    = $data['created_by'];
+            $Team = new Team;
+            $Team->name          = $data['name'];
+            $Team->team_type     = $data['team_type'];
+            $Team->company_id    = $data['company_id'];
+            $Team->created_by    = $data['created_by'];
            
-            $request->save();
+            $Team->save();
             // return 'success';
 
 
 
     }
-    public static function read($id){
+    public static function show($id){
 
-        $details=Team::where('id',$id)->get();
-        return $details;
+        $team=Team::where('id',$id)->first();
+        return $team;
 
     }
-    public static function update($id){
-            $change=Team::where('id',$id)->get();
-            $change->name          = $id['name'];
-            $change->team_type     = $id['team_type'];
-            $change->company_id    = $id['company_id'];
-            $change->created_by    = $id['created_by'];
-           
-            $change->save();
-            return $change;
+    public static function update($data){
+            $newTeam=Team::where('id',$data['id'])->first();
+            $newTeam->update();
+            return $newTeam;
            
     }
     public static function delete($id){

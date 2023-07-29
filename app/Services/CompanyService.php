@@ -28,8 +28,6 @@ class CompanyService{
         CompanyRepository::delete($id);
     }
     
-    public static function index($id){
-        CompanyRepository::index($id);
-    }
+   
 
 }

@@ -8,32 +8,33 @@ class RequestAssignedTypeRepository{
     public static function create($data){
           
             
-        $request = new RequestAssignedType;
-        $request->name = $data['name'];
+        $requesAssignedType = new RequestAssignedType;
+        $requesAssignedType->name = $data['name'];
         
        
-        $request->save();
-        // return 'success';
+        $requesAssignedType->save();
+        return $requesAssignedType;
 
 
 
     }
-        public static function read($id){
+        public static function show($id){
 
-        $details=RequestAssignedType::where('id',$id)->get();
+        $details=RequestAssignedType::where('id',$id)->first();
         return $details;
 
     }
-        public static function update($id){
-        $change=RequestAssignedType::where('id',$id)->get();
-        $change->name = $data['name'];
-        
-       
-        $change->save();
+        public static function update($data){
+        $requesAssignedType=RequestAssignedType::where('id',$data['id'])->first();
+        $requesAssignedType->update();
 
        
     }
         public static function delete($id){
         $drop=RequestAssignedType::where('id',$id)->delete();
+    }
+        public static function index(){
+        $requesAssignedType=RequestAssignedType::all();
+        return $requesAssignedType;
     }
 }

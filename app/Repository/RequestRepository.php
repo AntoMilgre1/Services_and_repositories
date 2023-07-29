@@ -5,6 +5,12 @@ use App\Models\Request;
 use Log;
 
 class RequestRepository {
+
+    public static function index(){
+            $requests=Request::all();
+            return $requests;
+
+    }
     public static function create($data){
           
             
@@ -23,23 +29,15 @@ class RequestRepository {
 
 
     }
-    public static function read($id){
+    public static function show($id){
 
-        $details=Request::where('id',$id)->get();
-        return $details;
+        $individualRequest=Request::where('id',$id)->first();
+        return $individualRequest;
 
     }
-    public static function update($id){
-            $change=Request::where('id',$id)->get();
-            $change->company_id            = $data['company_id'];
-            $change->client_id             = $data['client_id'];
-            $change->request_initiated_id  = $data['request_initiated_id'];
-            $change->title                 = $data['title'];
-            $change->request_status        = $data['request_status'];
-            $change->priority_id           = $data['priority_id'];
-            $change->due_at                = $data['due_at'];
-            $change->archive               = $data['archive'];
-            $change->save();
+    public static function update($data){
+            $change=Request::where('id',$data['id'])->first();
+            $change->update($data);
             return $change;
     }
     public static function delete($id){

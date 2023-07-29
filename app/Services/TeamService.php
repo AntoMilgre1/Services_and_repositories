@@ -5,18 +5,22 @@ namespace App\Services;
 use App\Repository\TeamRepository;
 
 class TeamService{
-    public static function create($data){
-        $details=TeamRepository::create($data);
+    public static function index(){
+        $teams=TeamRepository::index();
+        return $teams;
+    }
+    public static function store($data){
+        $details=TeamRepository::store($data);
         return $details;
     }
-    public static function read($id){
+    public static function show($id){
     
-        $details=TeamRepository::read($id);
+        $details=TeamRepository::show($id);
         return $details;
 
     }
-    public static function update($id){
-        TeamRepository::update($id);
+    public static function update($data){
+        TeamRepository::update($data);
        
     }
     public static function delete($id){

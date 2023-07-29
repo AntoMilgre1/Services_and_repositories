@@ -7,26 +7,57 @@ use App\Services\RequestAssignedTypeService;
 
 class RequestAssignedTypeController extends Controller
 {
-    //
-    public static function create(Request $request){
+      /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        $requestAssignedType=RequestAssignedTypeService::index();
+        return $requestAssignedType;
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
         $data=RequestAssignedTypeService::create($request->all());
         return response()->json(['status'=>true,
                                  'messege'=>'new data created',
                                  'data'=>$data]);
 
-    
-      
     }
-    public static function read($id){
-        $details=RequestAssignedTypeService::read($id);
-        return response()->json(['data'=>$details]);
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        $details=RequestAssignedTypeService::show($id);
+        return response()->json(['status'=>true,
+                                 'messege'=>'Request Assigned Type data',
+                                 'data'=>$details]);
     }
-    public static function update(Request $request){
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
         $new=RequestAssignedTypeService::update($request->all());
-        return response()->json(['status'=>true,'message' => 'updated','data'=>$new]);
+        return response()->json(['status'=>true,
+                                 'message' => 'updated',
+                                 'data'=>$new]);
     }
-    public static function delete($id){
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
         RequestAssignedTypeService::delete($id);
         return response()->json(['messege'=>'Deleted']);
     }
+    
+   
 }

@@ -5,18 +5,23 @@ namespace App\Services;
 use App\Repository\ServicesOntimeRepository;
 
 class servicesOntimeService{
-    public static function create($data){
-        $details=ServicesOntimeRepository::create($data);
+    public static function index(){
+        $servicesOntime=ServicesOntimeRepository::index();
+        return $servicesOntime;
+    }
+    public static function store($data){
+        $details=ServicesOntimeRepository::store($data);
         return $details;
     }
-    public static function read($id){
+    public static function show($id){
     
-        $details=ServicesOntimeRepository::read($id);
+        $details=ServicesOntimeRepository::show($id);
         return $details;
 
     }
-    public static function update($id){
-        ServicesOntimeRepository::update($id);
+    public static function update($data){
+       $newData= ServicesOntimeRepository::update($data);
+       return $newData;
        
     }
     public static function delete($id){

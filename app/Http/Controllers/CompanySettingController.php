@@ -25,10 +25,10 @@ class CompanySettingController extends Controller
      */
     public function store(Request $request)
     {
-        CompanySettingService::store($request->all());
+       $company_settings= CompanySettingService::store($request->all());
         return response()->json(['status'=>true,
                                  'messege'=>'new data created',
-                                 'data'=>$request->all()]);
+                                 'data'=>$company_settings]);
     }
 
     /**
@@ -36,7 +36,7 @@ class CompanySettingController extends Controller
      */
     public function show(string $id)
     {
-        $details=CompanySettingService::read($id);
+        $details=CompanySettingService::show($id);
         return response()->json(['data'=>$details]);
     }
 

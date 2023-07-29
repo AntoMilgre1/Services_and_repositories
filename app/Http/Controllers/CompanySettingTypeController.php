@@ -7,26 +7,53 @@ use App\Services\CompanySettingTypeService;
 
 class CompanySettingTypeController extends Controller
 {
-    //
-    public static function create(Request $request){
+    
+    
+     /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        $companysettingtypes=CompanySettingTypeService::index();
+        return $companysettingtypes;
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
         CompanySettingTypeService::create($request->all());
         return response()->json(['status'=>true,
                                  'messege'=>'new data created',
                                  'data'=>$request->all()]);
-
-    
-      
     }
-    public static function read($id){
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
         $details=CompanySettingTypeService::read($id);
         return response()->json(['data'=>$details]);
     }
-    public static function update(Request $request){
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
         $new=CompanySettingTypeService::update($request->all());
         return response()->json(['status'=>true,'message' => 'updated','data'=>$new]);
     }
-    public static function delete($id){
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
         CompanySettingTypeService::delete($id);
         return response()->json(['messege'=>'Deleted']);
     }
+    
 }

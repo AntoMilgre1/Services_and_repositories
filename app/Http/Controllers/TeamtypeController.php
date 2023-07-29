@@ -7,26 +7,56 @@ use App\Services\TeamTypeService;
 
 class TeamtypeController extends Controller
 {
-    //
-    public static function create(Request $request){
-        $data=TeamTypeService::create($request->all());
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        $teamTypes=TeamTypeService::index();
+        return $teamTypes; 
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        $teamType=TeamTypeService::store($request->all());
         return response()->json(['status'=>true,
                                  'messege'=>'new data created',
-                                 'data'=>$data]);
+                                 'data'=>$teamType]);
+    }
 
-    
-      
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        $teamType=TeamTypeService::show($id);
+        return response()->json(['status'=>true,
+                                 'messege'=>'Team Type Data',
+                                 'data'=>$details]);
     }
-    public static function read($id){
-       $details=TeamTypeService::read($id);
-        return response()->json(['data'=>$details]);
-    }
-    public static function update(Request $request){
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
         $new=TeamTypeService::update($request->all());
-        return response()->json(['status'=>true,'message' => 'updated','data'=>$new]);
+        return response()->json(['status'=>true,
+                                 'message' => 'updated',
+                                 'data'=>$new]);
     }
-    public static function delete($id){
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
         TeamTypeService::delete($id);
         return response()->json(['messege'=>'Deleted']);
     }
+    
+    
 }

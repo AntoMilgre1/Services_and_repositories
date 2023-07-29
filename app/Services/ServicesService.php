@@ -4,18 +4,23 @@ namespace App\Services;
 use App\Repository\ServicesRepository;
 
 class ServicesService{
+    public static function index(){
+        $services=ServicesRepository::index();
+        return $services;
+    }
     public static function create($data){
         $details=ServicesRepository::create($data);
         return $details;
     }
-    public static function read($id){
+    public static function show($id){
     
-        $details=ServicesRepository::read($id);
+        $details=ServicesRepository::show($id);
         return $details;
 
     }
-    public static function update($id){
-        ServicesRepository::update($id);
+    public static function update($data){
+        $services=ServicesRepository::update($data);
+        return $services;
        
     }
     public static function delete($id){

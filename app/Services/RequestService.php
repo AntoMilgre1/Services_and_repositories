@@ -6,21 +6,30 @@ use App\Model\Request;
 use App\Repository\RequestRepository;
 
 class RequestService{
+    public static function index(){
+        $requests= RequestRepository::index();
+        return $requests;
+        // return $res;
+          
+
+    }
     
         public static function create($data){
-            $res= RequestRepository::create($data);
+            $requests= RequestRepository::create($data);
+            return $requests;
             // return $res;
               
 
         }
-        public static function read($id){
+        public static function show($id){
     
-            $details=RequestRepository::read($id);
+            $details=RequestRepository::show($id);
             return $details;
 
         }
-        public static function update($id){
-            RequestRepository::update($id);
+        public static function update($data){
+            $newRequest=RequestRepository::update($data);
+            return $newRequest;
            
         }
         public static function delete($id){

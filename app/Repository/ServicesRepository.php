@@ -5,6 +5,8 @@ namespace App\Repository;
 use App\Models\Services;
 
 class ServicesRepository {
+
+
     public static function create($data){
           
             
@@ -20,24 +22,24 @@ class ServicesRepository {
 
 
     }
-    public static function read($id){
+    public static function show($id){
 
-        $details=Services::where('id',$id)->get();
+        $details=Services::where('id',$id)->first();
         return $details;
 
     }
-    public static function update($id){
-            $change=Services::where('id',$id)->get();
-            $change->description        = $id['description'];
-            $change->company_id         = $id['company_id'];
-            $change->image              = $id['image'];
-            $change->pricing_type_id    = $id['pricing_type_id'];
-           
-            $change->save();
-            return $change;
+    public static function update($data){
+            $newServices=Services::where('id',$data['id'])->first();
+            $newServices->update($data);
+            return $newServices;
            
     }
     public static function delete($id){
         $drop=Services::where('id',$id)->delete();
+        
+    }
+    public static function index(){
+        $services=Services::all();
+        return $services;
     }
 }

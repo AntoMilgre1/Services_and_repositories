@@ -5,6 +5,10 @@ use App\Repository\CompanySettingTypeRepository;
 
 
 class CompanySettingTypeService{
+    public static function index(){
+        $details=CompanySettingTypeRepository::index();
+        return $details;
+    }
     public static function create($data){
         $details=CompanySettingTypeRepository::create($data);
         return $details;

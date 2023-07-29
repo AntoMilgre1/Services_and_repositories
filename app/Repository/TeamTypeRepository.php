@@ -5,32 +5,32 @@ namespace App\Repository;
 use App\Models\TeamType;
 
 class TeamTypeRepository{
-    public static function create($data){
+    public static function index(){
+        $teamTypes=TeamType::all();
+        return $teamTypes;
+    }
+    public static function store($data){
           
             
-        $request = new TeamType;
-        $request->naame = $data['name'];
+        $teamType = new TeamType;
+        $teamType->naame = $data['name'];
         
        
-        $request->save();
+        $teamType->save();
         // return 'success';
 
 
 
     }
-        public static function read($id){
+        public static function show($id){
 
-        $details=TeamType::where('id',$id)->get();
+        $details=TeamType::where('id',$id)->first();
         return $details;
 
     }
-        public static function update($id){
-        $change=TeamType::where('id',$id)->get();
-        $change->naame = $id['naame'];
-        
-       
-        $change->save();
-        return $change;
+        public static function update($data){
+        $teamType=TeamType::where('id',$data)->first();
+        $teamType->update($data);
        
     }
         public static function delete($id){

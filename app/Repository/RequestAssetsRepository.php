@@ -5,26 +5,27 @@ namespace App\Repository;
 use App\Models\RequestAssets;
 
 class RequestAssetsRepository {
+    public static function index(){
+        $requestAssets=RequestAssets::all();
+        return $requestAssets;
+    }
     public static function create($data){
 
-        $request=new RequestAssets;
-        $request->file_name=$data['file_name'];
-        $request->type=$data['type'];
-        $request->save();
+        $requestAssets=new RequestAssets;
+        $requestAssets->file_name=$data['file_name'];
+        $requestAssets->type=$data['type'];
+        $requestAssets->save();
         
     }
-    public static function read($id){
+    public static function show($id){
 
-        $details=RequestAssets::where('id',$id)->get();
+        $details=RequestAssets::where('id',$id)->first();
         return $details;
 
     }
-    public static function update($id){
-            $change=RequestAssets::where('id',$id)->get();
-            $change=new RequestAssets;
-            $change->file_name          =$id['file_name'];
-            $change->type               =$id['type'];
-            $change->save();
+    public static function update($data){
+            $requestAssets=RequestAssets::where('id',$data['id'])->first();
+            $requestAssets->update($data);
             
            
     }

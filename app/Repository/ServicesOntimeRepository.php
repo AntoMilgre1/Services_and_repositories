@@ -4,35 +4,37 @@ namespace App\Repository;
 use App\Models\ServicesOntime;
 
 class ServicesOntimeRepository {
-    public static function create($data){
+    public static function index(){
+        $ServicesOntime=ServicesOntime::all();
+        return $ServicesOntime;
+
+    }
+
+    public static function store($data){
           
             
-            $request = new ServicesOntime;
-            $request->price = $data['price'];
-            $request->purchase_limit = $data['purchase_limit'];
+            $ServicesOntime = new ServicesOntime;
+            $ServicesOntime->price = $data['price'];
+            $ServicesOntime->purchase_limit = $data['purchase_limit'];
             
-            $request->service_id = $data['service_id'];
+            $ServicesOntime->service_id = $data['service_id'];
            
-            $request->save();
+            $ServicesOntime->save();
             // return 'success';
 
 
 
     }
-    public static function read($id){
+    public static function show($id){
 
-        $details=ServicesOntime::where('id',$id)->get();
+        $details=ServicesOntime::where('id',$id)->first();
         return $details;
 
     }
-    public static function update($id){
-            $change=ServicesOntime::where('id',$id)->get();
-            $change->price          = $data['price'];
-            $change->purchase_limit = $data['purchase_limit'];
-            
-            $change->service_id     = $data['service_id'];
-           
-            $change->save();
+    public static function update($data){
+            $ServicesOntime=ServicesOntime::where('id',$data['id'])->first();
+            $ServicesOntime->update($data);
+            return $ServicesOntime;
            
     }
     public static function delete($id){

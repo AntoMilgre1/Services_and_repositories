@@ -8,7 +8,22 @@ use Log;
 
 class RequestController extends Controller
 {
-    public static function create(Request $request){
+  
+    
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        $requests=RequestService::index();
+        return $requests;
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
         try{
             RequestService::create($request->all());
        
@@ -18,20 +33,37 @@ class RequestController extends Controller
         {
         return response()->json(['status' => false, 'message' => 'new Request Cannot Created', 'data' => []],500);
         }
-
-       
     }
-    public static function read($id){
 
-        $details=RequestService::read($id);
-        return response()->json(['data'=>$details]);
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        $individualRequest=RequestService::show($id);
+       return response()->json(['status'=>true,
+                                 'message'=>'request Data',
+                                 'data'=>$individualRequest],200);
     }
-    public static function update(Request $request){
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
         $new=RequestService::update($request->all());
-        return response()->json(['status'=>true,'message' => 'updated','data'=>$new]);
+        return response()->json(['status'=>true,
+                                 'message' => 'updated',
+                                 'data'=>$new]);
     }
-    public static function delete($id){
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
         RequestService::delete($id);
-        return response()->json(['messege'=>'Deleted']);
+        return response()->json(['status'=>true,
+                                 'messege'=>'Deleted']);
     }
 }

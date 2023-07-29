@@ -5,7 +5,12 @@ namespace App\Repository;
 use App\Models\CompanySetting;
 
 class CompanySettingRepository {
-    public static function create($data){
+
+    public static function index(){
+        $CompanySettings=CompanySetting::all();
+        return $CompanySettings;
+    }
+    public static function store($data){
           
             
             $companysetting = new CompanySetting();
@@ -21,20 +26,17 @@ class CompanySettingRepository {
 
 
     }
-    public static function read($id){
+    public static function show($id){
 
-        $details=CompanySetting::where('id',$id)->get();
+        $details=CompanySetting::where('id',$id)->first();
         return $details;
 
     }
-    public static function update($id){
-            $companysetting=CompanySetting::where('id',$id)->get();
-            $companysetting->company_id                = $id['company_id'];
-            $companysetting->setting_type_id           = $id['setting_type_id'];
-            $companysetting->value                     = $id['value'];
-            $companysetting->save();
+    public static function update($data){
+        $CompanySetting=CompanySetting::where('id',$data['id'])->first();
+        $CompanySetting->update($data);
+        return $CompanySetting;
 
-            return $companysetting;
             
            
     }
